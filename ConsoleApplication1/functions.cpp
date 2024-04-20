@@ -8,13 +8,18 @@
 #include <random>
 #include "main.h"
 
-extern float depositValue, withdrawValue;
+extern float wallet, depositValue, withdrawValue;
+
+
+
 
 float invalidDeposit() {
 
     while (depositValue <= 0) {
 
-        std::cout << "That's an invalid amount. Please, choose a value again: R$";
+        std::cout << "#### Welcome to the GO Bank! ####   --> WALLET: R$" << wallet << std::endl;
+
+        std::cout << "\nThat's an invalid amount. Please, choose a value again: R$";
 
         std::cin >> depositValue;
 
@@ -27,17 +32,17 @@ float invalidDeposit() {
 
 float depositOperation() {
 
-    float depositSum = wallet + depositValue;
+    float depositSum = wallet += depositValue;
 
 
-    return wallet + depositValue;
+    return depositSum;
 }
 
 float invalidWithdraw() {
 
     while (withdrawValue > wallet || withdrawValue <= 0) {
 
-        welcomeTxt();
+        std::cout << "#### Welcome to the GO Bank! ####   --> WALLET: R$" << wallet << std::endl;
 
         std::cout << "\nThat's an invalid amount. Please, choose a value again: R$";
 
@@ -52,10 +57,10 @@ float invalidWithdraw() {
 
 float withdrawOperation() {
 
-    float withdrawSubtraction = wallet - withdrawValue;
+    float withdrawSubtraction = wallet -= withdrawValue;
 
 
-    return wallet - withdrawValue;
+    return withdrawSubtraction;
 }
 
 std::vector<std::string> nameBills() {
@@ -85,3 +90,6 @@ std::vector<float> billValues() {
     }
     return numbers;
 }
+
+
+
